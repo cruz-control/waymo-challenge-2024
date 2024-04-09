@@ -16,11 +16,16 @@ spec:
         cpu: "2"
     volumeMounts:
     - mountPath: /pvcvolume/motion
-      name: waymo-motion-rbd
+      name: waymo-motion
     - mountPath: /pvcvolume/perception
       name: waymo-perception
+    - mountPath: /pvcvolume/motion-rbd
+      name: waymo-motion-rbd
   restartPolicy: Never
   volumes:
+  - name: waymo-motion
+    persistentVolumeClaim:
+      claimName: waymo-motion
   - name: waymo-motion-rbd
     persistentVolumeClaim:
       claimName: waymo-motion-rbd
