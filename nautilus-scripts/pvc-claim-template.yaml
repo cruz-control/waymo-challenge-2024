@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: <claim_name>
+  namespace: aiea-slugbotics
+spec:
+  storageClassName: <storage class https://ucsd-prp.gitlab.io/userdocs/storage/intro/>
+  accessModes:
+  - <access mode according to https://ucsd-prp.gitlab.io/userdocs/storage/intro/>
+  resources:
+    requests:
+      storage: <claim size>
