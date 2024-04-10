@@ -9,26 +9,26 @@ spec:
     command: ["sh", "-c", "apt-get update && apt --assume-yes install python3 git tmux vim && sleep infinity"]
     resources:
       limits:
-        memory: 10Gi
-        cpu: "10"
-      requests:
         memory: 2Gi
-        cpu: "2"
+        cpu: "4"
+      requests:
+        memory: 500Mi
+        cpu: "500m"
     volumeMounts:
-    - mountPath: /pvcvolume/motion
-      name: waymo-motion
     - mountPath: /pvcvolume/perception
       name: waymo-perception
     - mountPath: /pvcvolume/motion-rbd
       name: waymo-motion-rbd
+    - mountPath: /pvcvolume/dev
+      name: waymo-dev
   restartPolicy: Never
   volumes:
-  - name: waymo-motion
-    persistentVolumeClaim:
-      claimName: waymo-motion
   - name: waymo-motion-rbd
     persistentVolumeClaim:
       claimName: waymo-motion-rbd
   - name: waymo-perception
     persistentVolumeClaim:
       claimName: waymo-perception
+  - name: waymo-dev
+    persistentVolumeClaim:
+      claimName: waymo-dev

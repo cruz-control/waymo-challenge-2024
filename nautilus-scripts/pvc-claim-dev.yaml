@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: waymo-motion
+  name: waymo-dev
   namespace: aiea-slugbotics
 spec:
-  storageClassName: seaweedfs-storage-nvme
+  storageClassName: rook-cephfs
   accessModes:
   - ReadWriteMany
   resources:
     requests:
-      storage: 5Ti
+      storage: 20Gi
