@@ -6,7 +6,7 @@ spec:
   containers:
   - name: vol-container
     image: ubuntu
-    command: ["sh", "-c", "apt-get update && apt --assume-yes install python3 git tmux vim && sleep infinity"]
+    command: ["sh", "-c", "apt-get update && apt --assume-yes install python3 pip git tmux vim && python3 -m pip install tensorflow&& sleep infinity"]
     resources:
       limits:
         memory: 2Gi
