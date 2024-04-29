@@ -11,16 +11,18 @@ spec:
     args: 
       - |
         apt-get update && apt --assume-yes upgrade
-        apt --assume-yes install git vim wget curl
+        apt --assume-yes install git wget curl gcc g++ make
         /pvcvolume/motion-rbd/conda/bin/conda init bash
+        echo "conda activate waymo-env" >> ~/.bashrc
+        source ~/.bashrc
         sleep infinity
     resources:
       limits:
-        memory: 2Gi
-        cpu: "4"
+        memory: 6Gi
+        cpu: "8"
       requests:
-        memory: 500Mi
-        cpu: "500m"
+        memory: 1Gi
+        cpu: "1"
     volumeMounts:
     - mountPath: /pvcvolume/perception
       name: waymo-perception
