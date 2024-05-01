@@ -11,9 +11,10 @@ spec:
     args: 
       - |
         apt-get update && apt --assume-yes upgrade
-        apt --assume-yes install git wget curl gcc g++ make
+        apt --assume-yes install git wget gcc
         /pvcvolume/motion-rbd/conda/bin/conda init bash
         echo "conda activate waymo-env" >> ~/.bashrc
+        sleep 5
         source ~/.bashrc
         sleep infinity
     resources:
