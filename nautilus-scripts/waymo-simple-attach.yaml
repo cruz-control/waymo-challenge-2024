@@ -7,17 +7,16 @@ spec:
   containers:
   - name: vol-container
     image: ubuntu
-    command: ["sh", "-c"]
-    args: 
-      - |
-        bash /pvcvolume/dev/setup_scripts/startup.sh
+    command: ["sh", "-c", "bash /pvcvolume/dev/setup_scripts/startup.sh"]
     resources:
       limits:
         memory: 6Gi
         cpu: "8"
+        # nvidia.com/gpu: "1"
       requests:
         memory: 1Gi
         cpu: "1"
+        # nvidia.com/gpu: "1"
     volumeMounts:
     - mountPath: /pvcvolume/perception
       name: waymo-perception
