@@ -24,14 +24,19 @@ spec:
       name: waymo-motion-rbd
     - mountPath: /pvcvolume/dev
       name: waymo-dev
+    - mountPath: /pvcvolume/conda
+      name: conda
   restartPolicy: Never
   volumes:
   - name: waymo-motion-rbd
     persistentVolumeClaim:
-      claimName: waymo-motion-rbd
+      claimName: waymo-motion-rbd 
   - name: waymo-perception
     persistentVolumeClaim:
       claimName: waymo-perception
   - name: waymo-dev
     persistentVolumeClaim:
       claimName: waymo-dev
+  - name: conda
+    persistentVolumeClaim:
+      claimName: conda
