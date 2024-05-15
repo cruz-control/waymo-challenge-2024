@@ -6,7 +6,7 @@ metadata:
 spec:
   containers:
   - name: vol-container
-    image: ubuntu
+    image: dakshshah/aiea-slugbotics:dev
     command: ["sh", "-c", "sleep 10 && bash /pvcvolume/dev/setup_scripts/startup.sh"]
     resources:
       limits:
