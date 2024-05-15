@@ -12,7 +12,7 @@ spec:
       limits:
         memory: 6Gi
         cpu: "8"
-        ephemeral-storage:: "50Gi"
+        ephemeral-storage: "50Gi"
         # nvidia.com/gpu: "1"
       requests:
         memory: 1Gi
