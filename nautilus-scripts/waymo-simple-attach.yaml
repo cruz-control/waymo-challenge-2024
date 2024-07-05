@@ -10,15 +10,15 @@ spec:
     command: ["sh", "-c", "sleep 10 && bash /pvcvolume/dev/setup_scripts/startup.sh"]
     resources:
       limits:
-        memory: 6Gi
+        memory: 32Gi
         cpu: "8"
         ephemeral-storage: "50Gi"
-        # nvidia.com/gpu: "1"
+        nvidia.com/a100: 1
       requests:
         memory: 1Gi
         cpu: "1"
         ephemeral-storage: "20Gi"
-        # nvidia.com/gpu: "1"
+        nvidia.com/a100: 1
     volumeMounts:
     - mountPath: /pvcvolume/perception
       name: waymo-perception
