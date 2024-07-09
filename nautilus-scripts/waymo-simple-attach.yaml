@@ -6,19 +6,19 @@ metadata:
 spec:
   containers:
   - name: vol-container
-    image: dakshshah/aiea-slugbotics:latest
+    image: dakshshah/aiea-slugbotics:dev
     command: ["sh", "-c", "sleep 10 && bash /pvcvolume/dev/setup_scripts/startup.sh"]
     resources:
       limits:
         memory: 32Gi
         cpu: "8"
         ephemeral-storage: "50Gi"
-        # nvidia.com/a100: 1
+        nvidia.com/a100: "1"
       requests:
         memory: 1Gi
         cpu: "1"
         ephemeral-storage: "20Gi"
-        # nvidia.com/a100: 1
+        nvidia.com/a100: "1"
     volumeMounts:
     # - mountPath: /pvcvolume/perception
     #   name: waymo-perception
@@ -26,8 +26,8 @@ spec:
       name: waymo-motion-rbd
     - mountPath: /pvcvolume/dev
       name: waymo-dev
-    # - mountPath: /pvcvolume/conda
-    #   name: conda
+    - mountPath: /pvcvolume/conda
+      name: conda
   restartPolicy: Never
   volumes:
   - name: waymo-motion-rbd
@@ -39,6 +39,6 @@ spec:
   - name: waymo-dev
     persistentVolumeClaim:
       claimName: waymo-dev
-  # - name: conda
-  #   persistentVolumeClaim:
-  #     claimName: conda
+  - name: conda
+    persistentVolumeClaim:
+      claimName: conda
