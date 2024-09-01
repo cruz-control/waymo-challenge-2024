@@ -4,21 +4,35 @@ metadata:
   name: waymo-pod
   namespace: aiea-slugbotics
 spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: nvidia.com/cuda.runtime.major
+            operator: In
+            values:
+            - "12"
+          - key: nvidia.com/cuda.driver.major
+            operator: Gt
+            values:
+            - "535"
   containers:
   - name: vol-container
-    image: dakshshah/aiea-slugbotics:dev
+    # image: dakshshah/aiea-slugbotics:dev
+    image: nvidia/cuda:12.5.1-cudnn-devel-ubuntu22.04
     command: ["sh", "-c", "sleep 10 && bash /pvcvolume/dev/setup_scripts/startup.sh"]
     resources:
       limits:
         memory: 32Gi
         cpu: "8"
         ephemeral-storage: "50Gi"
-        nvidia.com/a100: "1"
+        nvidia.com/a100: "2"
       requests:
-        memory: 1Gi
+        memory: 16Gi
         cpu: "1"
         ephemeral-storage: "20Gi"
-        nvidia.com/a100: "1"
+        nvidia.com/a100: "2"
     volumeMounts:
     # - mountPath: /pvcvolume/perception
     #   name: waymo-perception
